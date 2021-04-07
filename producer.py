@@ -17,7 +17,7 @@ r = requests.get("https://stream.meetup.com/2/rsvps",stream=True)
 
 # Sending messages to Consumer.
 for line in r.iter_lines():
-    meetup_producer.send_messages('meetup',line)
+    meetup_producer.send_messages('meetup-stream',line)
     obj = json.loads(line.decode('utf-8'))
 ## printing the cities on console
     rsvps= (obj['group']['group_city'])
